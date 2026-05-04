@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "on Windows",
+            "intelliSenseMode": "msvc-x64",
+            "cppStandard": "c++20",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/build/vcpkg_installed/x64-windows/include"
+            ],
+            "defines": [
+                "_DEBUG"
+            ]
+        }
+    ],
+    "version": 4
+}

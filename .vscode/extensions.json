@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        /* Markdown */
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        /* cpp + CMake */
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools"
+    ]
+}
