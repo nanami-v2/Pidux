@@ -24,6 +24,8 @@ private:
     int         lineNo_;
 };
 
+struct Context {};
+
 } /* namespace */
 
 int main() {
@@ -48,8 +50,10 @@ int main() {
     line2.addGate(syncGate);
     line2.addExecutionUnit(unitC);
 
-    line1.buildOn(nullptr);
-    line2.buildOn(nullptr);
+    struct Context ctx{};
+
+    line1.buildOn(&ctx);
+    line2.buildOn(&ctx);
     ignitionGate.unlock();
 
     std::cin.get();

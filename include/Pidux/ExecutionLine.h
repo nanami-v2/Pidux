@@ -38,7 +38,7 @@ public:
     void addExecutionUnit(ExecutionUnit& executionUnit);
     void addGate(Gate& intermediateGate);
 
-    void buildOn(void* ctx);
+    void buildOn(void* ctx = nullptr);
     void destroy() noexcept;
 private:
     struct SharedData {
