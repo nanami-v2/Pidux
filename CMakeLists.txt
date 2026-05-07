@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.26)
 
 # https://learn.microsoft.com/en-us/vcpkg/users/buildsystems/cmake-integration
 set(CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
-project(Pipeline VERSION 1.0.0 LANGUAGES CXX)
+project(Pidux VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

@@ -12,7 +12,7 @@
 #include "./Gate.h"
 #include "./ExecutionUnit.h"
 
-namespace Pipeline {
+namespace Pidux {
 
 class ExecutionLine {
 public:
@@ -273,4 +273,4 @@ inline void ExecutionLine::destroy() noexcept {
     }
 }
 
-} /* namespace Pipeline */
+} /* namespace Pidux */

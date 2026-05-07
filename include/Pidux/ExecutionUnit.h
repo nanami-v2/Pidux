@@ -2,7 +2,7 @@
 // Copyright (c) 2026 nanami-v2
 #pragma once
 
-namespace Pipeline {
+namespace Pidux {
 
 class ExecutionUnit {
 public:
@@ -10,4 +10,4 @@ public:
     virtual void run(void* ctx) = 0;
 };
 
-} /* namespace Pipeline */
+} /* namespace Pidux */

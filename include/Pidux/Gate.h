@@ -4,7 +4,7 @@
 #include <mutex>
 #include <boost/container/static_vector.hpp>
 
-namespace Pipeline {
+namespace Pidux {
 
 class Gate {
 public:
@@ -132,4 +132,4 @@ inline void Gate::unlock() noexcept {
         cb->onUnlocked();
 }
 
-} /* namespace Pipeline */
+} /* namespace Pidux */

@@ -4,11 +4,11 @@
 #include <bitset>
 #include <iostream>
 #include <csignal>
-#include <Pipeline.h>
+#include <Pidux.h>
 
 namespace {
 
-class TestExecutionUnit final : public Pipeline::ExecutionUnit {
+class TestExecutionUnit final : public Pidux::ExecutionUnit {
 public:
     explicit TestExecutionUnit(char const* name, int lineNo):
         name_{name},
@@ -31,11 +31,11 @@ int main() {
         Line1: ---A---|---B---
         Line2: -------|---C---
     */
-    Pipeline::Gate ignitionGate{};
-    Pipeline::Gate syncGate{};
+    Pidux::Gate ignitionGate{};
+    Pidux::Gate syncGate{};
 
-    Pipeline::ExecutionLine line1{ignitionGate};
-    Pipeline::ExecutionLine line2{ignitionGate};
+    Pidux::ExecutionLine line1{ignitionGate};
+    Pidux::ExecutionLine line2{ignitionGate};
 
     TestExecutionUnit unitA{"A", 1};
     TestExecutionUnit unitB{"B", 1};
