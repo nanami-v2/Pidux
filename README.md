@@ -1,7 +1,7 @@
 <!-- omit in toc -->
-# Pidux
+# pidux
 
-`Pidux`はマルチスレッドによる並列パイプラインシステムを容易に実現するためのC++向け Header-only Library です。
+`pidux`はマルチスレッドによる並列パイプラインシステムを容易に実現するためのC++向け Header-only Library です。
 
 - `c++17`以降
 - `boost/container`
@@ -40,20 +40,20 @@ Line3: ---α-----------|---β---γ---|---δ------
 **この観点の下では実行ラインに実行ユニットを配置し、同期用のゲートを配置することでパイプライン全体を構成していくことになるでしょう。**
 
 ```c++
-class SampleUnit final : public Pidux::ExecutionUnit {
+class SampleUnit final : public pidux::ExecutionUnit {
 public:
     void run(void* ctx) override {
     }
 };
 
 /* イグニッションゲート。後述参照 */
-Pidux::Gate ignitionGate{};
+pidux::Gate ignitionGate{};
 
-Pidux::ExecutionLine line1{ignitionGate};
-Pidux::ExecutionLine line2{ignitionGate};
-Pidux::ExecutionLine line3{ignitionGate};
+pidux::ExecutionLine line1{ignitionGate};
+pidux::ExecutionLine line2{ignitionGate};
+pidux::ExecutionLine line3{ignitionGate};
 
-Pidux::Gate gateA, gateB, gateC, gateD;
+pidux::Gate gateA, gateB, gateC, gateD;
 
 SampleUnit unitA, unitB, unitC, unitD, unitE, unitF, unitG;
 SampleUnit unitX, unitY, unitZ;
@@ -101,7 +101,7 @@ ignitionGate.unlock();
 
 上に記したコード断片はあくまでも概念的なものですが、これを見れば回路による抽象化が並列パイプラインの構築においてどれだけ役立つかが分かるかと思います。頭の中にあるパイプラインの構成図をそのままコードに対応させ、イグニッションゲートを開放すればあとは自動的に動いてくれるのです――全自動で同期しつつ！
 
-これが`Pidux`の提供する機能であり、また開発動機となります。
+これが`pidux`の提供する機能であり、また開発動機となります。
 
 ## 仕様
 
@@ -113,7 +113,7 @@ ignitionGate.unlock();
 
 ### 実行ラインのコールバック
 
-実行ラインはスレッドで実装されています。ところでスレッドの開始時と終了時に適切な関数を呼びたいという動機があるでしょう。例えば`COM`を利用するなら`CoInitializeEx`, `CoUninitialize`を呼ぶ必要があるのは言うまでもありません。こうした場合をサポートするために、またエラーハンドリングのために、**`Pidux::ExecutionLine`にはコールバックが定義されています。**
+実行ラインはスレッドで実装されています。ところでスレッドの開始時と終了時に適切な関数を呼びたいという動機があるでしょう。例えば`COM`を利用するなら`CoInitializeEx`, `CoUninitialize`を呼ぶ必要があるのは言うまでもありません。こうした場合をサポートするために、またエラーハンドリングのために、**`pidux::ExecutionLine`にはコールバックが定義されています。**
 
 ```c++
 class ExecutionLine {
@@ -135,7 +135,7 @@ public:
 
 ### サイクルごとの手動実行
 
-既に述べたように、`Pidux`は一度イグニッションゲートを開放したら後は自律的に駆動するような作りになっています。では**ワンサイクルで実行を止め、何らかの入力が生じるまでサイクルの実行を停止させるようなことは出来るのでしょうか？**
+既に述べたように、`pidux`は一度イグニッションゲートを開放したら後は自律的に駆動するような作りになっています。では**ワンサイクルで実行を止め、何らかの入力が生じるまでサイクルの実行を停止させるようなことは出来るのでしょうか？**
 
 **もちろん出来ます。** 対象のパイプラインに対し
 

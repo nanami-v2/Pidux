@@ -4,7 +4,7 @@
 #include <mutex>
 #include <boost/container/static_vector.hpp>
 
-namespace Pidux {
+namespace pidux {
 
 class Gate {
 public:
@@ -78,7 +78,7 @@ inline void Gate::incrementLockCountAndMax() noexcept {
 
 inline void Gate::decrementLockCount() noexcept {
     bool unlocked = false;
-    /* ロックエリア */
+    /* lock area */
     {
         std::unique_lock<std::mutex> lock{this->sharedDataMutex_};
 
@@ -97,7 +97,7 @@ inline void Gate::decrementLockCount() noexcept {
 
 inline void Gate::decrementLockCountAndMax() noexcept {
     bool unlocked = false;
-    /* ロックエリア */
+    /* lock area */
     {
         std::unique_lock<std::mutex> lock{this->sharedDataMutex_};
 
@@ -122,7 +122,7 @@ inline void Gate::lock() noexcept {
 }
 
 inline void Gate::unlock() noexcept {
-    /* ロックエリア */
+    /* lock area */
     {
         std::unique_lock<std::mutex> lock{this->sharedDataMutex_};
 
@@ -132,4 +132,4 @@ inline void Gate::unlock() noexcept {
         cb->onUnlocked();
 }
 
-} /* namespace Pidux */
+} /* namespace pidux */
