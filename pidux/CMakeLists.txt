@@ -4,7 +4,7 @@ project(pidux VERSION 1.1.0 LANGUAGES CXX)
 include(GnuInstallDirs)
 include(CMakePackageConfigHelpers)
 
-find_package(boost CONFIG REQUIRED COMPONENTS container)
+find_package(Boost CONFIG REQUIRED COMPONENTS container)
 
 add_library(pidux INTERFACE)
 target_compile_features(pidux INTERFACE cxx_std_17)
@@ -42,7 +42,7 @@ install(
 write_basic_package_version_file(
     ${CMAKE_CURRENT_BINARY_DIR}/cmake/pidux-config-version.cmake
     VERSION ${PROJECT_VERSION}
-    COMPATIBILITY AnyNewerVersion
+    COMPATIBILITY SameMajorVersion
 )
 install(
     FILES ${CMAKE_CURRENT_BINARY_DIR}/cmake/pidux-config-version.cmake

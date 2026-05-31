@@ -50,7 +50,7 @@ int main() {
     line2.addGate(syncGate);
     line2.addExecutionUnit(unitC);
 
-    struct Context ctx{};
+    Context ctx{};
 
     line1.buildOn(&ctx);
     line2.buildOn(&ctx);
