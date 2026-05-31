@@ -1,4 +1,2 @@
 vcpkg_installed/
 build/
-build_*/
-dist/*
