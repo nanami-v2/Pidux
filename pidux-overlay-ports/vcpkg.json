@@ -1,0 +1,17 @@
+{
+  "name": "pidux",
+  "version": "1.1.0",
+  "description": "'pidux' is simple C++ header-only library to create parallel pipleline",
+  "license": "MIT",
+  "dependencies": [
+    "boost-container",
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}

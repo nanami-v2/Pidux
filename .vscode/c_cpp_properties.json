@@ -6,7 +6,8 @@
             "cppStandard": "c++17",
             "includePath": [
                 "${workspaceFolder}/pidux/include",
-                "${workspaceFolder}/build/vcpkg_installed/x64-windows/include"
+                "${workspaceFolder}/build/compile_test/vcpkg_installed/x64-windows/include",
+                "${workspaceFolder}/build/package_test/vcpkg_installed/x64-windows/include"
             ],
             "defines": [
                 "_DEBUG"
