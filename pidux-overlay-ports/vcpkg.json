@@ -1,6 +1,6 @@
 {
   "name": "pidux",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "'pidux' is simple C++ header-only library to create parallel pipleline",
   "license": "MIT",
   "dependencies": [
