@@ -21,9 +21,9 @@ install(
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 # install: target export file
-install(TARGETS pidux EXPORT piduxTargets)
+install(TARGETS pidux EXPORT pidux_targets)
 install(
-    EXPORT piduxTargets
+    EXPORT pidux_targets
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pidux/cmake
     NAMESPACE pidux::
     FILE "pidux-targets.cmake"
