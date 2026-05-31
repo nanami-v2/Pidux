@@ -1,11 +1,15 @@
 # https://learn.microsoft.com/en-us/vcpkg/users/buildsystems/cmake-integration
 
+.PHONY: cmake-config-and-generate
+cmake-config-and-generate:
+	cmake -B build \
+		-DCMAKE_TOOLCHAIN_FILE="$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake" \
+		-DBUILD_SAMPLE=ON
 
-.PHONY: samples
-samples:
-	cmake -S samples -B build-samples -DCMAKE_TOOLCHAIN_FILE="$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake"
-	cmake --build build-samples
+.PHONY: cmake-build
+cmake-build:
+	cmake --build build
 
 .PHONY: clean
 clean:
-	cmake -E rm -rf build-samples
+	cmake -E rm -rf build
