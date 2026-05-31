@@ -12,7 +12,7 @@
 #include "./Gate.h"
 #include "./ExecutionUnit.h"
 
-namespace Pidux {
+namespace pidux {
 
 class ExecutionLine {
 public:
@@ -178,7 +178,7 @@ inline void ExecutionLine::addGate(Gate& intermediateGate) {
 
 inline void ExecutionLine::buildOn(void* ctx) {
     this->thread_ = std::thread{[this, ctx]() {
-        /* 開始待ち */
+        /* wait for starting... */
         {
             std::unique_lock<std::mutex> lock{this->sharedDataMutex_};
 
@@ -191,7 +191,7 @@ inline void ExecutionLine::buildOn(void* ctx) {
             if (this->sharedData_.shutdownFlag)
                 return;
         }
-        /* 開始 */
+        /* start */
         try {
             if (this->callback_)
                 this->callback_->onStart(ctx);
@@ -203,14 +203,14 @@ inline void ExecutionLine::buildOn(void* ctx) {
             }
             return;
         }
-        /* 定常状態 */
+        /* steady state */
         while (true) {
             std::size_t intermediateGateCursor = 0;
             bool        shutdownFlag           = false;
 
             for (auto& e : this->lineElements_) {
                 if (std::holds_alternative<ExecutionUnit*>(e)) {
-                    /* ロックエリア */
+                    /* lock area */
                     {
                         std::unique_lock<std::mutex> lock{this->sharedDataMutex_};
 
@@ -235,7 +235,7 @@ inline void ExecutionLine::buildOn(void* ctx) {
                 }
                 if (std::holds_alternative<Gate*>(e)) {
                     std::get<Gate*>(e)->decrementLockCount();
-                    /* ロックエリア */
+                    /* lock area */
                     {
                         std::unique_lock<std::mutex> lock{this->sharedDataMutex_};
 
@@ -273,4 +273,4 @@ inline void ExecutionLine::destroy() noexcept {
     }
 }
 
-} /* namespace Pidux */
+} /* namespace pidux */

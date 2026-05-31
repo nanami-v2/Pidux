@@ -5,7 +5,7 @@
             "intelliSenseMode": "msvc-x64",
             "cppStandard": "c++17",
             "includePath": [
-                "${workspaceFolder}/include",
+                "${workspaceFolder}/pidux/include",
                 "${workspaceFolder}/build/vcpkg_installed/x64-windows/include"
             ],
             "defines": [
