@@ -1,0 +1,4 @@
+pidux provides CMake targets:
+
+find_package(pidux CONFIG REQUIRED)
+target_link_libraries(main PRIVATE pidux::pidux)
