@@ -3,6 +3,9 @@
 build_dir := build
 dist_dir  := dist
 
+.PHONY: all
+all: compile-test .WAIT package-test
+
 .PHONY: compile-test
 compile-test:
 	cmake -S tests/compile_test -B $(build_dir)/compile_test \
@@ -13,7 +16,7 @@ compile-test:
 package-test:
 	cmake -S tests/package_test -B $(build_dir)/package_test \
 		-DCMAKE_TOOLCHAIN_FILE="$(VCPKG_ROOT)\scripts\buildsystems\vcpkg.cmake" \
-		-DVCPKG_OVERLAY_PORTS="pidux-overlay-ports" -DCMAKE_FIND_DEBUG_MODE=ON
+		-DVCPKG_OVERLAY_PORTS="pidux-overlay-ports"
 	cmake --build $(build_dir)/package_test
 
 .PHONY: clean
