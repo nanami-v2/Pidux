@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26)
-project(pidux VERSION 1.1.2 LANGUAGES CXX)
+project(pidux VERSION 1.2.0 LANGUAGES CXX)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
