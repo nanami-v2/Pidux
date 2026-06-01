@@ -10,9 +10,8 @@ namespace {
 
 class TestExecutionUnit final : public pidux::ExecutionUnit {
 public:
-    explicit TestExecutionUnit(char const* name, int lineNo):
-        name_{name},
-        lineNo_{lineNo}
+    explicit TestExecutionUnit(char const* name):
+        name_{name}
     {}
     void run(void* ctx) override {
         auto const sleepTime = std::chrono::milliseconds{std::rand() % 500};
@@ -21,7 +20,6 @@ public:
     }
 private:
     std::string name_;
-    int         lineNo_;
 };
 
 struct Context {};
@@ -39,9 +37,17 @@ int main() {
     pidux::ExecutionLine line1{ignitionGate};
     pidux::ExecutionLine line2{ignitionGate};
 
-    TestExecutionUnit unitA{"A", 1};
-    TestExecutionUnit unitB{"B", 1};
-    TestExecutionUnit unitC{"C", 2};
+    /* ExcutionUnit: class version */
+    TestExecutionUnit unitA{"A"};
+    TestExecutionUnit unitB{"B"};
+
+    /* ExcutionUnit: lambda version */
+    auto unitC = pidux::makeExecutionUnitAdaptor([](auto* ctx) {
+        auto const sleepTime = std::chrono::milliseconds{std::rand() % 500};
+
+        std::cout << "C";
+        std::this_thread::sleep_for(sleepTime);
+    });
 
     line1.addExecutionUnit(unitA);
     line1.addGate(syncGate);
