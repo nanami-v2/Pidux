@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.26)
 project(pidux VERSION 1.1.1 LANGUAGES CXX)
 
-include(GnuInstallDirs)
+include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 find_package(Boost CONFIG REQUIRED COMPONENTS container)
